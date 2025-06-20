@@ -60,14 +60,6 @@ const AuthorPage = () => {
                 </button>
               ))
             )}
-            {selectedAuthor && (
-              <button
-                className="px-3 py-1 rounded font-semibold border bg-gray-700 text-white border-gray-700 transition"
-                onClick={() => setSelectedAuthor("")}
-              >
-                Reset
-              </button>
-            )}
           </div>
 
           {/* List Manga dari Author yang dipilih */}

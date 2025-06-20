@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 
-// Helper untuk membaca cookie di client
 function getCookie(name: string) {
   if (typeof document === "undefined") return null;
   const value = `; ${document.cookie}`;
@@ -17,6 +16,7 @@ const Navbar = () => {
   const [profilePic, setProfilePic] = useState<string | null>(null);
   const router = useRouter();
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const pathname = usePathname();
 
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
@@ -29,7 +29,6 @@ const Navbar = () => {
     }
   };
 
-  // Close dropdown jika klik di luar
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (
@@ -48,7 +47,6 @@ const Navbar = () => {
   }, [showDropdown]);
 
   useEffect(() => {
-    // Cek session_token di cookie
     const token = getCookie("session_token");
     setIsLoggedIn(!!token);
     if (token) {
@@ -66,7 +64,6 @@ const Navbar = () => {
   }, []);
 
   const handleLogout = () => {
-    // Hapus cookie session_token
     document.cookie = "session_token=; Max-Age=0; path=/";
     setIsLoggedIn(false);
     window.location.href = "/auth/login";
@@ -88,49 +85,61 @@ const Navbar = () => {
               <li>
                 <a
                   href="/"
-                  className="hover:text-blue-400 transition-colors"
+                  className={`hover:text-blue-400 transition-colors ${
+                    pathname === "/" ? "text-blue-500 font-bold" : ""
+                  }`}
                 >
                   Beranda
                 </a>
               </li>
               <li>
                 <a
-                  href="/Daftar-Manga"
-                  className="hover:text-blue-400 transition-colors"
+                  href="/manga-list"
+                  className={`hover:text-blue-400 transition-colors ${
+                    pathname === "/manga-list" ? "text-blue-500 font-bold" : ""
+                  }`}
                 >
                   Daftar Manga
                 </a>
               </li>
               <li>
                 <a
-                  href="/Genre"
-                  className="hover:text-blue-400 transition-colors"
+                  href="/genre"
+                  className={`hover:text-blue-400 transition-colors ${
+                    pathname === "/genre" ? "text-blue-500 font-bold" : ""
+                  }`}
                 >
                   Genre
                 </a>
               </li>
               <li>
                 <a
-                  href="/Author"
-                  className="hover:text-blue-400 transition-colors"
+                  href="/author"
+                  className={`hover:text-blue-400 transition-colors ${
+                    pathname === "/author" ? "text-blue-500 font-bold" : ""
+                  }`}
                 >
                   Author
                 </a>
               </li>
               <li>
                 <a
-                  href="/Jadwal-Rilis"
-                  className="hover:text-blue-400 transition-colors"
+                  href="/schedule"
+                  className={`hover:text-blue-400 transition-colors ${
+                    pathname === "/schedule" ? "text-blue-500 font-bold" : ""
+                  }`}
                 >
                   Jadwal Rilis
                 </a>
               </li>
               <li>
                 <a
-                  href="#"
-                  className="hover:text-blue-400 transition-colors"
+                  href="/manguys"
+                  className={`hover:text-blue-400 transition-colors ${
+                    pathname === "/manguys" ? "text-blue-500 font-bold" : ""
+                  }`}
                 >
-                  Support gw
+                  Join Manguys
                 </a>
               </li>
             </ul>
@@ -175,7 +184,7 @@ const Navbar = () => {
                   <img
                     src={profilePic}
                     alt="Profile"
-                    className="w-7 h-7 rounded-full object-cover border-2 border-blue-500"
+                    className="w-9 h-9 rounded-full object-cover border-2 border-blue-500"
                   />
                 ) : (
                   <svg
