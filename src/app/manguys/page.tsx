@@ -14,10 +14,7 @@ const ManguysPage = () => {
             Apa itu <span className="text-white">Manguys?</span>
           </h1>
           <p className="mb-8 text-lg text-gray-300">
-            <b>Manguys</b> adalah komunitas eksklusif bagi para penggemar manga di Indonesia! 
-            Di sini kamu bisa berdiskusi, berbagi rekomendasi, mendapatkan update terbaru, 
-            dan berteman dengan sesama pecinta manga.<br /><br />
-            Gabung sekarang dan dapatkan akses ke event, giveaway, serta fitur spesial lainnya!
+            Dengan <b>Manguys</b> kamu dapat berkontribusi untuk mengupload manga hasil translasi sendiri, kamu dapat membagikan manga yang belum ada di website ini, dan kamu juga dapat berinteraksi dengan pengguna lain melalui komentar di setiap manga yang ada. 
           </p>
           <a
             href="/auth/login"
@@ -26,7 +23,7 @@ const ManguysPage = () => {
             Join Manguys Sekarang
           </a>
         </div>
-        <div className="flex-1 relative min-h-0 flex mt-10">
+        <div className="flex-1 relative min-h-0 flex mt-10 mr-10  ">
           <img
             src="https://pict.sindonews.net/webp/480/pena/news/2023/02/09/700/1018567/9-karakter-anime-paling-sempurna-nyaris-tanpa-cela-xwg.webp"
             alt="Manguys Community"

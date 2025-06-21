@@ -207,7 +207,7 @@ const Navbar = () => {
                   {isLoggedIn ? (
                     <>
                       <a
-                        href="/My-Account"
+                        href="/profile"
                         className="block px-4 py-2 text-gray-200 hover:bg-blue-600 hover:text-white transition-colors"
                       >
                         My Profile
