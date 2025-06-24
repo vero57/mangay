@@ -7,10 +7,10 @@ const Footer = () => (
         {/* Kolom 1 */}
         <div>
           <h4 className="text-lg font-bold text-white mb-2">
-            Manga<span className="text-blue-500">Ku</span>
+            Man<span className="text-pink-500">gay</span>
           </h4>
           <p className="text-gray-400 text-sm">
-            MangaKu adalah platform baca komik (manga) online dengan koleksi terlengkap dan update tercepat.
+            Mangay adalah platform baca komik (manga) online dengan koleksi terlengkap dan update tercepat.
           </p>
         </div>
 
@@ -47,7 +47,7 @@ const Footer = () => (
 
       {/* Bagian Copyright */}
       <div className="mt-8 pt-6 border-t border-gray-800 text-center text-gray-500 text-sm">
-        &copy; 2024 MangaKu. Seluruh hak cipta dilindungi.
+        &copy; 2024 Mangay. Seluruh hak cipta dilindungi.
       </div>
     </div>
   </footer>

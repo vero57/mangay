@@ -1,8 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
+const yaeImg = "/assets/yae.png";
 
 type UserData = {
   username: string;
@@ -21,6 +22,34 @@ function getCookie(name: string) {
 }
 
 export default function MyAccountPage() {
+  const yaeRef = useRef<HTMLImageElement>(null);
+  const [yaePos, setYaePos] = useState({ x: 100, y: 100 });
+  const [yaeVel, setYaeVel] = useState({ vx: 2, vy: 2 });
+
+  useEffect(() => {
+    let raf: number;
+    const animate = () => {
+      setYaePos((pos) => {
+        let { x, y } = pos;
+        let { vx, vy } = yaeVel;
+        const imgW = 100, imgH = 100;
+        const maxX = window.innerWidth - imgW;
+        const maxY = window.innerHeight - imgH;
+        x += vx;
+        y += vy;
+        if (x < 0) { x = 0; vx = -vx; }
+        if (x > maxX) { x = maxX; vx = -vx; }
+        if (y < 0) { y = 0; vy = -vy; }
+        if (y > maxY) { y = maxY; vy = -vy; }
+        setYaeVel({ vx, vy });
+        return { x, y };
+      });
+      raf = requestAnimationFrame(animate);
+    };
+    raf = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(raf);
+  }, [yaeVel.vx, yaeVel.vy]);
+
   const [user, setUser] = useState<UserData | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -57,6 +86,25 @@ export default function MyAccountPage() {
 
   return (
     <div className="bg-gray-900 text-white min-h-screen w-full flex flex-col">
+      <img
+        ref={yaeRef}
+        src={yaeImg}
+        alt="yae"
+        style={{
+          position: "fixed",
+          left: yaePos.x,
+          top: yaePos.y,
+          width: 100,
+          height: 100,
+          zIndex: 9999,
+          pointerEvents: "none",
+          userSelect: "none",
+          border: "none",
+          background: "transparent",
+          boxShadow: "none",
+        }}
+        draggable={false}
+      />
       <Navbar />
       <div className="w-full px-0 py-8 md:py-16 flex justify-center flex-1">
         <div className="w-full max-w-3xl">
