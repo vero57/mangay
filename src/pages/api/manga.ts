@@ -20,7 +20,14 @@ export default async function handler(
 
   try {
     const connection = await mysql.createConnection(dbConfig);
-    const [rows] = await connection.execute("SELECT * FROM manga ORDER BY id DESC");
+    const [rows] = await connection.execute(`
+      SELECT 
+        manga.*, 
+        users.username AS uploader_name 
+      FROM manga 
+      LEFT JOIN users ON manga.uploader_id = users.id 
+      ORDER BY manga.id DESC
+    `);
     await connection.end();
     res.status(200).json(rows);
   } catch (error) {

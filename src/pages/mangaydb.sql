@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jun 17, 2025 at 10:22 AM
+-- Generation Time: Jun 27, 2025 at 03:39 PM
 -- Server version: 8.4.3
 -- PHP Version: 8.3.16
 
@@ -89,6 +89,7 @@ CREATE TABLE `manga` (
   `status` enum('Ongoing','Completed','Hiatus') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT 'Ongoing',
   `reader` int DEFAULT '0',
   `rating` decimal(3,2) DEFAULT '0.00',
+  `uploader_id` int DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -96,10 +97,10 @@ CREATE TABLE `manga` (
 -- Dumping data for table `manga`
 --
 
-INSERT INTO `manga` (`id`, `title`, `description`, `cover_url`, `author`, `status`, `reader`, `rating`, `created_at`) VALUES
-(1, 'Mengenal Teknologi AI Terbaru di Tahun 2025', 'Artikel ini membahas perkembangan terbaru dalam kecerdasan buatan, termasuk inovasi di bidang pembelajaran mesin, visi komputer, dan pemrosesan bahasa alami yang diperkirakan akan dominan di tahun 2025.', 'https://example.com/ai_tech_2025.jpg', 'Budi Santoso', 'Ongoing', 0, 0.00, '2025-06-16 11:20:26'),
-(2, 'Panduan Lengkap Memulai Bisnis Online untuk Pemula', 'Pelajari langkah-langkah esensial untuk meluncurkan bisnis online Anda sendiri, mulai dari riset pasar, pembuatan produk, hingga strategi pemasaran digital yang efektif.', 'https://example.com/bisnis_online.jpg', 'Siti Aminah', 'Ongoing', 0, 0.00, '2025-06-16 11:20:26'),
-(3, 'Resep Masakan Nusantara Populer yang Wajib Dicoba', 'Kumpulan resep masakan khas Indonesia yang mudah diikuti, cocok untuk koki pemula maupun yang ingin bereksperimen dengan cita rasa autentik.', 'https://example.com/resep_nusantara.jpg', 'Chef Juna', 'Ongoing', 0, 0.00, '2025-06-16 11:20:26');
+INSERT INTO `manga` (`id`, `title`, `description`, `cover_url`, `author`, `status`, `reader`, `rating`, `uploader_id`, `created_at`) VALUES
+(1, 'Mengenal Teknologi AI Terbaru di Tahun 2025', 'Artikel ini membahas perkembangan terbaru dalam kecerdasan buatan, termasuk inovasi di bidang pembelajaran mesin, visi komputer, dan pemrosesan bahasa alami yang diperkirakan akan dominan di tahun 2025.', 'https://example.com/ai_tech_2025.jpg', 'Budi Santoso', 'Ongoing', 0, 0.00, NULL, '2025-06-16 11:20:26'),
+(2, 'Panduan Lengkap Memulai Bisnis Online untuk Pemula', 'Pelajari langkah-langkah esensial untuk meluncurkan bisnis online Anda sendiri, mulai dari riset pasar, pembuatan produk, hingga strategi pemasaran digital yang efektif.', 'https://example.com/bisnis_online.jpg', 'Siti Aminah', 'Ongoing', 0, 0.00, NULL, '2025-06-16 11:20:26'),
+(3, 'Resep Masakan Nusantara Populer yang Wajib Dicoba', 'Kumpulan resep masakan khas Indonesia yang mudah diikuti, cocok untuk koki pemula maupun yang ingin bereksperimen dengan cita rasa autentik.', 'https://example.com/resep_nusantara.jpg', 'Chef Juna', 'Ongoing', 0, 0.00, NULL, '2025-06-16 11:20:26');
 
 -- --------------------------------------------------------
 
@@ -146,7 +147,13 @@ INSERT INTO `sessions` (`id`, `user_id`, `session_token`, `expires_at`, `created
 (1, 5, '89b168d44f25950e8835f4d12697a335bc811f93216409075704b1782c085aaf', '2025-06-24 13:48:46', '2025-06-17 06:48:46'),
 (3, 5, '05fa3afebb0d89f75ae5b3c096ea2a303c01d2d0e3b62880e49ed23dc78d1d3c', '2025-06-24 13:55:55', '2025-06-17 06:55:55'),
 (4, 5, 'eaa3360f0f5693ff38eea2c5093454f60e316ca4914c39a7de1637efccdc4b46', '2025-06-24 13:56:25', '2025-06-17 06:56:24'),
-(5, 5, 'fcc1e5e73429fc1c31dd85f9687a31207f6de1ed137e9cd5eb08e80f87822d07', '2025-06-24 13:57:20', '2025-06-17 06:57:19');
+(5, 5, 'fcc1e5e73429fc1c31dd85f9687a31207f6de1ed137e9cd5eb08e80f87822d07', '2025-06-24 13:57:20', '2025-06-17 06:57:19'),
+(6, 5, '76a9e5eaf7c6bafc1f5ce0bff592ff474bfe5cdf20578229c32429de90fbeb35', '2025-06-27 09:11:11', '2025-06-20 02:11:10'),
+(7, 5, '640b1633aaaf1a3482322c2fd437512fadc747f71c5e555a3e21c14e406654b1', '2025-06-27 09:12:51', '2025-06-20 02:12:51'),
+(8, 5, '9c8aca3d928635aba96ee351dafe62a34aab5ada151407ea059382a9b85ddf26', '2025-06-28 17:16:25', '2025-06-21 10:16:25'),
+(9, 5, '18bdaa993ced6bd9393a52006fe8752166ef26c55f9182c22aec77b83481380b', '2025-07-01 17:55:22', '2025-06-24 10:55:21'),
+(10, 5, '66c776c22014f8dc95381b0d77ee520c43c86a5ae03a46f7507416f1b11a7a21', '2025-07-01 18:28:05', '2025-06-24 11:28:04'),
+(11, 5, 'af32d8ae034d0706a163c136872aade22cab81cd0d858df5a79fc3f7e7ee9521', '2025-07-01 18:31:29', '2025-06-24 11:31:28');
 
 -- --------------------------------------------------------
 
@@ -209,7 +216,8 @@ ALTER TABLE `genres`
 -- Indexes for table `manga`
 --
 ALTER TABLE `manga`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_uploader` (`uploader_id`);
 
 --
 -- Indexes for table `manga_genres`
@@ -285,7 +293,7 @@ ALTER TABLE `release_schedule`
 -- AUTO_INCREMENT for table `sessions`
 --
 ALTER TABLE `sessions`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -315,6 +323,12 @@ ALTER TABLE `chapter_pages`
 ALTER TABLE `comments`
   ADD CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`manga_id`) REFERENCES `manga` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `comments_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE SET NULL;
+
+--
+-- Constraints for table `manga`
+--
+ALTER TABLE `manga`
+  ADD CONSTRAINT `fk_uploader` FOREIGN KEY (`uploader_id`) REFERENCES `users` (`id`);
 
 --
 -- Constraints for table `manga_genres`

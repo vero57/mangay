@@ -180,8 +180,6 @@ const Homepage = () => {
                   </div>
                 ))}
               </div>
-              
-              {/* Arrow Left */}
               <button
                 className="slideshow-arrow absolute left-4 top-1/2 -translate-y-1/2"
                 onClick={goPrev}
@@ -190,7 +188,6 @@ const Homepage = () => {
               >
                 &#8592;
               </button>
-              {/* Arrow Right */}
               <button
                 className="slideshow-arrow absolute right-4 top-1/2 -translate-y-1/2"
                 onClick={goNext}
@@ -199,8 +196,6 @@ const Homepage = () => {
               >
                 &#8594;
               </button>
-              
-              {/* Dots */}
               <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex">
                 {heroSlides.map((_, idx) => (
                   <span

@@ -21,7 +21,6 @@ const ManguysPage = () => {
     if (token) {
       router.push("/manguys-contributor");
     } else {
-      // Simpan flag agar setelah login/register redirect ke manguys-contributor
       if (typeof window !== "undefined") {
         sessionStorage.setItem("redirectAfterAuth", "/manguys-contributor");
       }
@@ -30,7 +29,6 @@ const ManguysPage = () => {
   };
 
   React.useEffect(() => {
-    // Jika user baru login/register dari page ini, redirect ke manguys-contributor
     if (typeof window !== "undefined") {
       const redirect = sessionStorage.getItem("redirectAfterAuth");
       const token = getCookie("session_token");

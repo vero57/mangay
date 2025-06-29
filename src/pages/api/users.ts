@@ -20,7 +20,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const { username, email, password, profile_picture, mode } = req.body;
 
     if (mode === "login") {
-      // Login mode
       if (!email || !password) {
         res.status(400).json({ message: "Missing fields" });
         return;
